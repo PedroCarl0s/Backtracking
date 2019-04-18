@@ -10,9 +10,7 @@ int main() {
 
     permutacao(n, array);
 
-    
     return 0;
-    
 }
 
 
@@ -25,28 +23,21 @@ void permutacao(int n, int *array) {
         
     }
     
-    for (i = 0; i <= n-1; i++) {
-     
+    for (i = 0; i <= n-1; i++) {     
         int j;
 
-      
         permutacao(n-1, array);
         
         j = i;
-        
         if ((n % 2) == 0) {
             j = 0;
         } 
 
         swap(&array[j], &array[n-1]);
-        
-    
     }
-
     return;
-    
-}
 
+}
 
 void print_res(int *array) {
     int length = 3;
@@ -58,12 +49,10 @@ void print_res(int *array) {
     return;
 }
 
-
 void swap(int *px, int *py) {
 
     int temp;
     temp = *px;
     *px = *py;
     *py = temp;
-    
 }
