@@ -1,5 +1,6 @@
 #include <stdio.h>
 
-void permutacao(int n, int *array);
-void print_res(int *array);
+void permutacao(int n, int size, int *array);
+void print_res(int input, int size, int *array);
 void swap(int *i, int *j);
+void generate(int input, int *array);
