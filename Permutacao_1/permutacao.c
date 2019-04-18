@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 #include "permutacao.h"
 
 int main() {
@@ -21,17 +19,15 @@ int main() {
 
 
 void permutacao(int n, int size, int *array) {
-
-    int i, aux, *ptr_a, *ptr_b;
+    
+    int i;
     
     if (n == 0) {
         print_res(n, size, array);
-        
     }
     
-    for (i = 0; i <= n-1; i++) {     
+    for (i = 0; i < n; i++) {     
         int j;
-
         permutacao(n-1, size, array);
         
         j = i;
