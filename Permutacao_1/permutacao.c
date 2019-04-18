@@ -4,29 +4,35 @@
 #include "permutacao.h"
 
 int main() {
-
-    int n = 3;
-    int array[] = {1, 2, 3};
-
-    permutacao(n, array);
-
+    
+    int n, size;
+    printf("Insira o valor de N: ");
+    scanf("%d", &n);
+    
+    size = n;
+    puts("");
+    
+    int array[size];
+    generate(size, array);
+    permutacao(n, size, array);
+    
     return 0;
 }
 
 
-void permutacao(int n, int *array) {
+void permutacao(int n, int size, int *array) {
 
     int i, aux, *ptr_a, *ptr_b;
     
     if (n == 0) {
-        print_res(array);
+        print_res(n, size, array);
         
     }
     
     for (i = 0; i <= n-1; i++) {     
         int j;
 
-        permutacao(n-1, array);
+        permutacao(n-1, size, array);
         
         j = i;
         if ((n % 2) == 0) {
@@ -39,10 +45,9 @@ void permutacao(int n, int *array) {
 
 }
 
-void print_res(int *array) {
-    int length = 3;
-
-    for (int i = 0; i < length; i++) {
+void print_res(int input, int size, int *array) {
+    
+    for (int i = 0; i < size; i++) {
         printf("%d ", array[i]);
     }
     puts("");
@@ -55,4 +60,10 @@ void swap(int *px, int *py) {
     temp = *px;
     *px = *py;
     *py = temp;
+}
+
+void generate(int input, int *array) {
+    for (int i = 0; i < input; i++) {
+        array[i] = i+1;
+    }
 }
