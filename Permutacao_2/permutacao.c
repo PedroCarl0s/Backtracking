@@ -3,6 +3,27 @@
 
 int acc = 0;
 
+
+void back_bin(int i, int max, int *arr)
+{
+    if (i==max){
+        int j;
+        for(j=0;j<max;++j)
+        {
+            printf(" %d",arr[j]);
+        }
+        printf("\n");
+        fflush(stdout);
+        return ;
+    }
+    arr[i]=0;
+    back_bin(i+1,max, arr);
+    arr[i]=1;
+    back_bin(i+1,max, arr);
+    return;
+}
+
+
 int main() {
     
     int n, size;
@@ -15,32 +36,36 @@ int main() {
     int array[size];
     int aux[size];
 
-    generate(size, array);
-    permutacao(0, size, array, aux);
+    //generate(size, array);
+    //back_bin(0,size,array);
+    permutacao(0, size, array);
     
     return 0;
 }
 
 
-void permutacao(int n, int size, int *array, int *aux) {
+void permutacao(int n, int size, int *array) {
 
     int i;
-    
+    //printf("SIZE: %d\n", size);
     if (n == size) {
+        //puts("ENTROU");
         acc++;
-        print_res(size, aux);
+        print_res(size, array);
     
          return;
 
-    } else {
-    
-        for (i = 0; i < size; i++) {     
-            
-            aux[n] = array[i];
+    }        
 
-            permutacao(n+1, size, array, aux);
-        }
+    for (int k = 0; k < 2; k++) {     
+        
+        array[n] = k;
+        //printf("N: %d\n", n);
+        permutacao(n+1, size, array);
+        //puts("PASSOU 2");
     }
+    
+    
     return;
 
 }
